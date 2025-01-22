@@ -277,8 +277,8 @@ export default function CheckoutPage() {
       price: item.price,
       quantity: item.quantity,
       imageUrl: item.imageUrl,
-      size: item.Size || "N/A",
-      description: item.Description,
+      size: item.size || "N/A",
+      description: item.description,
     }));
 
     const totalAmount = state.items.reduce(

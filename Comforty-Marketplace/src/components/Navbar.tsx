@@ -16,7 +16,7 @@ const Navbar = () => {
     <Link href="/contact" className={` hover:text-[#007580] ${currentPath === '/contact' ? ' text-[#007580]' : ''}`}>Contact</Link>
     </nav>
     <div>
-        <p>Contact: <span className='ml-2 text-[#272343]'>(808) 555-0111</span></p>
+        <p>Contact: <span className='ml-2 text-[#272343]'>0311-2387225</span></p>
     </div>
     </div>
    </div>

@@ -9,6 +9,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CartProvider } from "@/app/context/CartContext";
 import { WishlistProvider } from "./context/WhishlistContext";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,21 +29,31 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${inter.className} mx-auto max-w-[1440px]`}>
-      <CartProvider>
-        <WishlistProvider>
-        <TopHeader />
-        <CartHeader />
-        <Navbar/>      
-            {children}
-        </WishlistProvider>     
-        </CartProvider>        
-        <Footer/>
-
-        <ToastContainer />
-        </body>        
-    </html>
-  );
+  
+    return (
+      <ClerkProvider>
+        <html lang="en">
+          <body className={`${inter.className} mx-auto max-w-[1440px]`}>
+            <CartProvider>
+              <WishlistProvider>
+                <TopHeader />
+                <CartHeader />
+                <Navbar />
+                {children}
+              </WishlistProvider>
+            </CartProvider>
+    
+            <Footer />
+            <ToastContainer />
+    
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </body>
+        </html>
+      </ClerkProvider>
+    );
 }
